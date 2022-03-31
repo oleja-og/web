@@ -1,0 +1,17 @@
+{% extends 'firstapp/base.html' %}
+{% block title %}contact{% endblock title %}
+{% block header %}Главная страница{% endblock header %}
+{% block content %}
+    <p>Категория продуктов</p>
+    {% for i in cat %}
+            <li>{{ i }}</li>
+        {% empty %}
+            <li>Категория отсутствует</li>
+        {% endfor %}
+    {% with name="Чайхана" nom=1 %}
+        <div>
+            <p>При магазине работает {{ name }}</p>
+            <p>Номер № {{ nom }}</p>
+        </div>
+    {% endwith %}
+{% endblock content %}

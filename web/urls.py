@@ -16,15 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path
 from firstapp import views
+from django.views.generic import TemplateView
 
 urlpatterns = [
+    path('home/',views.home),
     re_path(r'^products/$', views.products),
     re_path(r'^products/(?P<productid>\d+)/', views.products),
     path('users/', views.users),
     path('users/<int:id>/<str:name>/', views.users),
     re_path(r'^details', views.details),
-    re_path(r'^about', views.about),
-    re_path(r'^contact', views.contact),
-    path('', views.index, name='home'),
+    path('about', TemplateView.as_view(template_name='firstapp/about.html')),
+    path('contact', views.contact),
+    path('', views.index),
     path('admin/', admin.site.urls),
 ]

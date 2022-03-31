@@ -1,14 +1,20 @@
 from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
+from django.template.response import TemplateResponse
 
 def index(request):
+    data = {'age': 33}
+    return render(request, 'firstapp/index.html',context=data)
+
+def home(request):
     return render(request, 'firstapp/home.html')
 
 def about(request):
     return HttpResponse("<h2>about</h2>")
 
 def contact(request):
-    return HttpResponseRedirect('/about')
+    cat = ['Ноутбуки','Принтеры','Диски','Шнуры']
+    return render(request, 'firstapp/contact.html',context={'cat': cat})
 
 def products(request,productid= 1):
     category = request.GET.get('cat', '')
