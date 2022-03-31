@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
 
 def index(request):
-    return HttpResponse("<h2> Hello</h2>")
+    return render(request, 'firstapp/home.html')
 
 def about(request):
     return HttpResponse("<h2>about</h2>")
