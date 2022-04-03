@@ -1,10 +1,23 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseRedirect, HttpResponsePermanentRedirect
+from django.http import *
 from django.template.response import TemplateResponse
+from .forms import UserForm, UserForm1
+
+def index_app1(request):
+    if request.method == "POST":
+        userform1 = UserForm1(request.POST)
+        if userform1.is_valid():
+            name = userform1.cleaned_data["name"]
+            return HttpResponse('<h2>True - {0}</h2>'.format(name))
+        else:
+            return HttpResponse('False')
+    else:
+        userform1 = UserForm1
+        return render(request, 'firstapp/index_app1.html',{'form1':userform1})
 
 def index(request):
-    data = {'age': 33}
-    return render(request, 'firstapp/index.html',context=data)
+    userform = UserForm()
+    return render(request, 'firstapp/index.html', {'form': userform})
 
 def home(request):
     return render(request, 'firstapp/home.html')

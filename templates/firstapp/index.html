@@ -1,12 +1,18 @@
-{% extends 'firstapp/base.html' %}
-{% block title %}index{% endblock title %}
-{% block header %}Главная страница{% endblock header %}
-{% block content %}
-    <p>Анализ возраста клиента</p>
-    {% if age > 65 %}
-        <p>Клиент достиг пенсионного возраста</p>
-    {% else %}
-        <p>Клиент не является пенсионером</p>
-    {% endif %}
-    <p>Связка шаблонов index and base.html</p>
-{% endblock content %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма Django</title>
+</head>
+<body>
+    <h2> form table </h2>
+    <form method="POST">
+            {% csrf_token %}
+        <table>
+            {{ form.as_table}}
+        </table>
+        <input type="submit" value="Отправить">
+    </form>
+
+</body>
+</html>

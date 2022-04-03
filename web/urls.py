@@ -28,5 +28,6 @@ urlpatterns = [
     path('about', TemplateView.as_view(template_name='firstapp/about.html')),
     path('contact', views.contact),
     path('', views.index),
+    path('index_app1', views.index_app1),
     path('admin/', admin.site.urls),
 ]

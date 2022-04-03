@@ -1,13 +1,18 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Hello</title>
+    <title>Форма Django</title>
 </head>
 <body>
-    <hi>{{ header }}</hi>
-    <p>Имя: {{user.name}} Age: {{ user.age }}</p>
-    <p>Адрес: ул. {{ address.0 }}, д. {{ address.1 }}, кв. {{ address.2 }}</p>
-    <p>Владеет языками : {{ langs.0 }}</p>
+    <h2> form1 table </h2>
+    <form method="POST" novalidate>
+            {% csrf_token %}
+        <table>
+            {{ form1.as_table}}
+        </table>
+        <input type="submit" value="Отправить">
+    </form>
+
 </body>
 </html>
